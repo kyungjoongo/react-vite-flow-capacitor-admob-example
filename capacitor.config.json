@@ -1,0 +1,9 @@
+{
+    "appId": "com.jessica.vite000001",
+    "appName": "kyungjoon_vite0001",
+    "webDir": "dist",
+    "bundledWebRuntime": false,
+    "server": {
+        "url": "http://192.168.1.84:3000/"
+    }
+}

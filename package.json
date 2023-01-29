@@ -1,0 +1,49 @@
+{
+    "name": "kyungjoon-vite001",
+    "private": true,
+    "version": "0.0.0",
+    "type": "module",
+    "scripts": {
+        "dev": "vite --host 0.0.0.0 --port 3000",
+        "android": " npx cap run android -l --external --target 990c2c8f",
+        "build": "vite build",
+        "preview": "vite preview"
+    },
+    "dependencies": {
+        "@capacitor-community/admob": "^4.1.0",
+        "@capacitor-community/barcode-scanner": "^3.0.1",
+        "@capacitor/android": "^4.6.2",
+        "@capacitor/app": "^4.1.1",
+        "@capacitor/cli": "^4.6.2",
+        "@capacitor/core": "^4.6.2",
+        "@capacitor/dialog": "^4.1.0",
+        "@capacitor/haptics": "^4.1.0",
+        "@capacitor/ios": "^4.6.2",
+        "@capacitor/toast": "^4.1.0",
+        "@ionic/react": "^6.5.1",
+        "@ionic/react-router": "^6.5.1",
+        "antd": "^5.1.6",
+        "axios": "^1.2.6",
+        "flow-bin": "^0.198.2",
+        "lodash": "^4.17.21",
+        "mobx": "^6.7.0",
+        "mobx-react": "^7.6.0",
+        "mobx-react-lite": "^3.4.0",
+        "react": "^18.2.0",
+        "react-dom": "^18.2.0",
+        "react-native": "^0.71.1",
+        "react-native-web": "^0.18.12",
+        "react-router": "^6.8.0",
+        "react-router-dom": "6.8.0"
+    },
+    "devDependencies": {
+        "@bunchtogether/vite-plugin-flow": "^1.0.2",
+        "@types/react": "^18.0.26",
+        "@types/react-dom": "^18.0.9",
+        "@types/react-native": "^0.71.1",
+        "@types/react-native-web": "npm:@types/react-native",
+        "@vitejs/plugin-react-swc": "^3.0.0",
+        "vite": "^4.0.0",
+        "vite-plugin-flow": "^0.2.1"
+    }
+}
