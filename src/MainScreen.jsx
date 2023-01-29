@@ -1,15 +1,14 @@
 // @flow
 import React, {useEffect, useState} from 'react'
 import './App.css'
-import {ActivityIndicator, Button, View} from "react-native-web";
+import {ActivityIndicator, ScrollView, View} from "react-native-web";
 import {useNavigate} from "react-router";
 import {Button as AButton} from 'antd'
 import {AdMob, InterstitialAdPluginEvents} from "@capacitor-community/admob";
 import {initializeAdmob, showBanner} from "./initAdmob";
-import {Capacitor} from "@capacitor/core";
+import {Capacitor, CapacitorHttp} from "@capacitor/core";
 import {BarcodeScanner} from "@capacitor-community/barcode-scanner";
 import {Toast} from '@capacitor/toast';
-import {Dialog} from "@capacitor/dialog";
 import {Haptics, ImpactStyle} from "@capacitor/haptics";
 
 export default function MainScreen(props) {
@@ -19,7 +18,27 @@ export default function MainScreen(props) {
         //
     }, [])
 
+    const doGet = async () => {
+        setLoading(true)
+        const options = {
+            url: 'https://jsonplaceholder.typicode.com/posts',
+        };
+
+        const response: any = await CapacitorHttp.get(options);
+        setResults(response.data)
+        setTimeout(() => {
+            setLoading(false)
+        }, 2)
+
+    };
+
+    const [results, setResults] = useState([]);
+
+    const [loading, setLoading] = useState(false);
+
+
     async function init() {
+        doGet();
         if (Capacitor.getPlatform() === 'android') {
             await initializeAdmob();
             await showBanner();
@@ -113,6 +132,18 @@ export default function MainScreen(props) {
                         showConfirm
                     </AButton>
                 </View>
+                {loading && <ActivityIndicator size={'large'}/>}
+                {!loading && <View style={{height: 350,}}>
+                    <ScrollView>
+                        {results.map((item, index) => {
+                            return (
+                                <View>
+                                    <div>{item.title}</div>
+                                </View>
+                            )
+                        })}
+                    </ScrollView>
+                </View>}
             </div>
         </div>
     )
