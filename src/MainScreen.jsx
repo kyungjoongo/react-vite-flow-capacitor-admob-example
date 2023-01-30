@@ -10,7 +10,6 @@ import {Capacitor, CapacitorHttp} from "@capacitor/core";
 import {BarcodeScanner} from "@capacitor-community/barcode-scanner";
 import {Toast} from '@capacitor/toast';
 import {Haptics, ImpactStyle} from "@capacitor/haptics";
-import extractor from 'youtube-extractor'
 import {YoutubePlayer} from "capacitor-youtube-player";
 
 export default function MainScreen(props) {
@@ -108,17 +107,19 @@ export default function MainScreen(props) {
                     </AButton>
                 </View>
                 <View style={{height: 50}}/>
-                <View style={{justifyContent: "space-between"}}>
+                <View style={{justifyContent: "space-between", margin: 30,}}>
                     <AButton type={"primary"} onClick={() => {
                         showInitAdmob();
                     }}>
                         showInitAdmob
                     </AButton>
+                    <View style={{height: 20}}/>
                     <AButton type={"primary"} onClick={async () => {
                         navigate('/QrScannerScreen')
                     }}>
                         startScan
                     </AButton>
+                    <View style={{height: 20}}/>
                     <AButton type={"primary"} onClick={async () => {
                         await Toast.show({
                             text: 'kyungjoon is genis!',
@@ -127,27 +128,7 @@ export default function MainScreen(props) {
                     }}>
                         startScan
                     </AButton>
-                    <AButton type={"primary"} onClick={async () => {
-                        try{
-                            const options = {playerId: 'youtube-player', playerSize: {width: 640, height: 360}, videoId: 'Dmn7tTaNM-I', debug: true};
-                            const result = await YoutubePlayer.initialize(options);
-                            console.log('playerReady', result);
-                        }catch (e) {
-                            alert(e.toString())
-                        }
-                        //
-                        // setTimeout(() => {
-                        //     YoutubePlayer.playVideo(options.playerId)
-                        // }, 1000)
-                        //navigate(('/YoutubeScreen'))
-
-                        // const formats = await extractor.get_video_formats('Dmn7tTaNM-I')
-                        // const downloadURL = await formats[0].downloadURL();
-                        // alert(downloadURL)
-
-                    }}>
-                        youtube
-                    </AButton>
+                    <View style={{height: 20}}/>
                     <AButton type={"primary"} onClick={async () => {
                         showConfirm()
                     }}>
