@@ -24,6 +24,7 @@
         "@ionic/react-router": "^6.5.1",
         "antd": "^5.1.6",
         "axios": "^1.2.6",
+        "capacitor-youtube-player": "^1.1.0",
         "flow-bin": "^0.198.2",
         "lodash": "^4.17.21",
         "mobx": "^6.7.0",
@@ -34,7 +35,9 @@
         "react-native": "^0.71.1",
         "react-native-web": "^0.18.12",
         "react-router": "6.8.0",
-        "react-router-dom": "6.8.0"
+        "react-router-dom": "6.8.0",
+        "react-youtube": "^10.1.0",
+        "youtube-extractor": "^1.0.2"
     },
     "devDependencies": {
         "@bunchtogether/vite-plugin-flow": "^1.0.2",

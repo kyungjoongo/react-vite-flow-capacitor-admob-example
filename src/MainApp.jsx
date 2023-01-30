@@ -6,6 +6,7 @@ import DetailScreen from "./DetailScreen";
 import {ConfigProvider} from "antd";
 import { App } from '@capacitor/app';
 import QrScannerScreen from "./QrScannerScreen";
+import YoutubeScreen from "./YoutubeScreen";
 
 App.addListener('backButton', ({ canGoBack }) => {
     if(canGoBack){
@@ -33,6 +34,7 @@ function MainApp() {
                         <Route path="/" element={<MainScreen/>}/>
                         <Route path="/DetailScreen" element={<DetailScreen/>}/>
                         <Route path="/QrScannerScreen" element={<QrScannerScreen/>}/>
+                        <Route path="/YoutubeScreen" element={<YoutubeScreen/>}/>
                     </Routes>
                 </div>
 

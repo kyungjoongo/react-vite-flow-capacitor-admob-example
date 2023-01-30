@@ -10,9 +10,10 @@ import {Capacitor, CapacitorHttp} from "@capacitor/core";
 import {BarcodeScanner} from "@capacitor-community/barcode-scanner";
 import {Toast} from '@capacitor/toast';
 import {Haptics, ImpactStyle} from "@capacitor/haptics";
+import extractor from 'youtube-extractor'
+import {YoutubePlayer} from "capacitor-youtube-player";
 
 export default function MainScreen(props) {
-
     useEffect(() => {
         init()
         //
@@ -29,7 +30,6 @@ export default function MainScreen(props) {
         setTimeout(() => {
             setLoading(false)
         }, 2)
-
 
 
     };
@@ -49,7 +49,6 @@ export default function MainScreen(props) {
     }
 
     const [count, setCount] = useState(0)
-
     const showInitAdmob = async () => {
         AdMob.addListener(InterstitialAdPluginEvents.Loaded, (info) => {
             // Subscribe prepared interstitial
@@ -129,6 +128,27 @@ export default function MainScreen(props) {
                         startScan
                     </AButton>
                     <AButton type={"primary"} onClick={async () => {
+                        try{
+                            const options = {playerId: 'youtube-player', playerSize: {width: 640, height: 360}, videoId: 'Dmn7tTaNM-I', debug: true};
+                            const result = await YoutubePlayer.initialize(options);
+                            console.log('playerReady', result);
+                        }catch (e) {
+                            alert(e.toString())
+                        }
+                        //
+                        // setTimeout(() => {
+                        //     YoutubePlayer.playVideo(options.playerId)
+                        // }, 1000)
+                        //navigate(('/YoutubeScreen'))
+
+                        // const formats = await extractor.get_video_formats('Dmn7tTaNM-I')
+                        // const downloadURL = await formats[0].downloadURL();
+                        // alert(downloadURL)
+
+                    }}>
+                        youtube
+                    </AButton>
+                    <AButton type={"primary"} onClick={async () => {
                         showConfirm()
                     }}>
                         showConfirm
@@ -139,7 +159,7 @@ export default function MainScreen(props) {
                     <ScrollView>
                         {results.map((item, index) => {
                             return (
-                                <View>
+                                <View key={index.toString()}>
                                     <div>{item.title}</div>
                                 </View>
                             )

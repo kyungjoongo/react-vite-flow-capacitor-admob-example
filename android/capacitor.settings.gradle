@@ -19,3 +19,6 @@ project(':capacitor-haptics').projectDir = new File('../node_modules/@capacitor/
 
 include ':capacitor-toast'
 project(':capacitor-toast').projectDir = new File('../node_modules/@capacitor/toast/android')
+
+include ':capacitor-youtube-player'
+project(':capacitor-youtube-player').projectDir = new File('../node_modules/capacitor-youtube-player/android')
