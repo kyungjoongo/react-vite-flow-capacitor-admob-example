@@ -8,6 +8,7 @@ export default function BiometricScreen(props) {
         init()
         //
     }, [])
+
     function init() {
     }
 
@@ -21,7 +22,7 @@ export default function BiometricScreen(props) {
         const touch = data.touch;
         const face = data.face;
 
-        alert(touch)
+        //alert(touch)
 
         fingerPrintAuth.verify({
             title: '고경준 천재냄이십니까???????', // optional title (used only on Android)
@@ -32,22 +33,21 @@ export default function BiometricScreen(props) {
             cancelTitle: "Get me out //The localized title for the cancel button in the dialog presented to the user during authentication"
         })
             .then(() => {
-                alert('바이옴메트릭 ok!!!!!!!!!')
+                alert('fingerPrintAuth success!!!!!!!!')
             })
             .catch(err => {
                 console.log(`Biometric ID NOT OK: ${JSON.stringify(err)}`)
-                alert('failed!!!!!')
+                alert('fingerPrintAuth failed!!!!!')
             });
     }
 
     return (
         <div className="App">
-            BiometricScreenBiometricScreenBiometricScreen
             <Button type={"primary"} onClick={async () => {
                 await performBiometricVerificatin()
             }}>
 
-                sdlkfsldkf
+                눌러서 지문 인증
             </Button>
         </div>
     )
