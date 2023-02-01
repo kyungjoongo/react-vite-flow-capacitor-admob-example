@@ -7,6 +7,7 @@ import {ConfigProvider} from "antd";
 import { App } from '@capacitor/app';
 import QrScannerScreen from "./QrScannerScreen";
 import YoutubeScreen from "./YoutubeScreen";
+import BiometricScreen from "./BiometricScreen";
 
 App.addListener('backButton', ({ canGoBack }) => {
     if(canGoBack){
@@ -23,7 +24,7 @@ function MainApp() {
         <ConfigProvider
             theme={{
                 token: {
-                    colorPrimary: '#00b96b',
+                    colorPrimary: 'orange',
                 },
             }}
         >
@@ -35,6 +36,7 @@ function MainApp() {
                         <Route path="/DetailScreen" element={<DetailScreen/>}/>
                         <Route path="/QrScannerScreen" element={<QrScannerScreen/>}/>
                         <Route path="/YoutubeScreen" element={<YoutubeScreen/>}/>
+                        <Route path="/BiometricScreen" element={<BiometricScreen/>}/>
                     </Routes>
                 </div>
 

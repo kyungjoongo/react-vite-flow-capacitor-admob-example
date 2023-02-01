@@ -791,7 +791,7 @@
     tslib "^2.4.0"
     xml2js "^0.4.23"
 
-"@capacitor/core@^4.0.0", "@capacitor/core@^4.6.2":
+"@capacitor/core@^4.0.0", "@capacitor/core@^4.6.2", "@capacitor/core@latest":
   version "4.6.2"
   resolved "https://registry.yarnpkg.com/@capacitor/core/-/core-4.6.2.tgz#9ea189218131ccf58f2b23fd3bdd69ed124dfe5b"
   integrity sha512-M/KpAg+peft/HTb7svLiKHxjbll67ybs1vEqhZuvjXlwro53NxNXR4YJS7+wNXZSiA4Kxjtf+a754xGgZcMarA==
@@ -2092,6 +2092,13 @@ capacitor-youtube-player@^1.1.0:
   dependencies:
     "@types/node" "^18.11.9"
 
+capacitor4-fingerprint-auth@0.1.1:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/capacitor4-fingerprint-auth/-/capacitor4-fingerprint-auth-0.1.1.tgz#2bce93feaa27ce959f31b9ee061405f5ad45253e"
+  integrity sha512-h+/o8CkIKeAr9vA98vYKrFinu4HeLhszAiEhrd3N7FI5FIi4s58z91h/zP8CA0G2J9sygmmaEyKGIuJfeFFqow==
+  dependencies:
+    "@capacitor/core" latest
+
 chalk@^2.0.0:
   version "2.4.2"
   resolved "https://registry.yarnpkg.com/chalk/-/chalk-2.4.2.tgz#cd42541677a54333cf541a49108c1432b44c9424"
@@ -3349,6 +3356,11 @@ jest-worker@^27.2.0:
     "@types/node" "*"
     merge-stream "^2.0.0"
     supports-color "^8.0.0"
+
+jetifier@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/jetifier/-/jetifier-2.0.0.tgz#699391367ca1fe7bc4da5f8bf691eb117758e4cb"
+  integrity sha512-J4Au9KuT74te+PCCCHKgAjyLlEa+2VyIAEPNCdE5aNkAJ6FAJcAqcdzEkSnzNksIa9NkGmC4tPiClk2e7tCJuQ==
 
 joi@^17.2.1:
   version "17.7.0"

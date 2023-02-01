@@ -1,16 +1,17 @@
 // @flow
 import React, {useEffect, useState} from 'react'
 import './App.css'
-import {ActivityIndicator, ScrollView, View} from "react-native-web";
+import {ScrollView, View} from "react-native-web";
 import {useNavigate} from "react-router";
-import {Button as AButton} from 'antd'
+import {Button as AButton, Spin} from 'antd'
 import {AdMob, InterstitialAdPluginEvents} from "@capacitor-community/admob";
-import {initializeAdmob, showBanner} from "./initAdmob";
-import {Capacitor, CapacitorHttp} from "@capacitor/core";
+import sharedService, {initializeAdmob, showBanner} from "./initAdmob";
+import {Capacitor} from "@capacitor/core";
 import {BarcodeScanner} from "@capacitor-community/barcode-scanner";
 import {Toast} from '@capacitor/toast';
 import {Haptics, ImpactStyle} from "@capacitor/haptics";
-import {YoutubePlayer} from "capacitor-youtube-player";
+import axios from "axios";
+import _ from 'lodash'
 
 export default function MainScreen(props) {
     useEffect(() => {
@@ -19,21 +20,16 @@ export default function MainScreen(props) {
     }, [])
 
     const doGet = async () => {
-        setLoading(true)
-        const options = {
-            url: 'https://jsonplaceholder.typicode.com/posts',
-        };
-
-        const response: any = await CapacitorHttp.get(options);
-        setResults(response.data)
-        setTimeout(() => {
-            setLoading(false)
-        }, 2)
-
-
+        if (_.isEmpty(sharedService.results)) {
+            setLoading(true)
+            const response: any = await axios.get('https://jsonplaceholder.typicode.com/posts');
+            sharedService.results = response.data;
+            setTimeout(()=>{
+                setLoading(false)
+            },300)
+        }
     };
 
-    const [results, setResults] = useState([]);
 
     const [loading, setLoading] = useState(false);
 
@@ -106,8 +102,21 @@ export default function MainScreen(props) {
                         push
                     </AButton>
                 </View>
+                <View style={{marginTop:10,}}>
+                    <AButton title={'push2'} onClick={() => {
+                        navigate('/BiometricScreen')
+                    }}>
+                        BiometricScreen
+                    </AButton>
+                </View>
                 <View style={{height: 50}}/>
                 <View style={{justifyContent: "space-between", margin: 30,}}>
+                    <AButton type={"primary"} onClick={() => {
+                        showInitAdmob();
+                    }}>
+                        showInitAdmob
+                    </AButton>
+                    <View style={{height:30,}}/>
                     <AButton type={"primary"} onClick={() => {
                         showInitAdmob();
                     }}>
@@ -135,10 +144,10 @@ export default function MainScreen(props) {
                         showConfirm
                     </AButton>
                 </View>
-                {loading && <ActivityIndicator size={'large'}/>}
-                {!loading && <View style={{height: 350,}}>
+                {<View style={{height: 350,}}>
+                    {loading && <Spin size={'large'}/>}
                     <ScrollView>
-                        {results.map((item, index) => {
+                        {!loading && sharedService.results.map((item, index) => {
                             return (
                                 <View key={index.toString()}>
                                     <div>{item.title}</div>

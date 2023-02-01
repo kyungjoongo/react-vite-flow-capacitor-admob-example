@@ -22,3 +22,6 @@ project(':capacitor-toast').projectDir = new File('../node_modules/@capacitor/to
 
 include ':capacitor-youtube-player'
 project(':capacitor-youtube-player').projectDir = new File('../node_modules/capacitor-youtube-player/android')
+
+include ':capacitor4-fingerprint-auth'
+project(':capacitor4-fingerprint-auth').projectDir = new File('../node_modules/capacitor4-fingerprint-auth/android/capacitor4-fingerprint-auth')

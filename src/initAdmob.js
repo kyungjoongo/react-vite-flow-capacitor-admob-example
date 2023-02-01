@@ -83,6 +83,10 @@ class SharedService {
     setCurrentUser(valueMap: TypeCurrentUser) {
         this.currentUser = valueMap
     }
+
+    results=[]
+
+
 }
 
 const sharedService = new SharedService();
