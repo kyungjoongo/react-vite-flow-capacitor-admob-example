@@ -1,4 +1,9 @@
-apply plugin: 'com.android.application'
+// plugin: 'com.android.application'
+
+plugins {
+    id 'com.android.application'
+    id 'com.google.gms.google-services'
+}
 
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
@@ -44,6 +49,9 @@ dependencies {
     androidTestImplementation "androidx.test.espresso:espresso-core:$androidxEspressoCoreVersion"
     implementation project(':capacitor-cordova-android-plugins')
     implementation 'com.google.android.gms:play-services-cast-framework:21.2.0'
+
+    implementation platform('com.google.firebase:firebase-bom:31.2.0')
+    implementation 'com.google.firebase:firebase-analytics-ktx'
 }
 
 apply from: 'capacitor.build.gradle'

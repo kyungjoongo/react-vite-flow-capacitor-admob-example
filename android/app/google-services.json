@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "317918145023",
+    "project_id": "vite00001-c8571",
+    "storage_bucket": "vite00001-c8571.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:317918145023:android:d013911ffe0e18afac5fca",
+        "android_client_info": {
+          "package_name": "com.jessica.vite000001"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "317918145023-mh0cunqb4r23uveio34fs842vtcp6biv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyANwVh5Si52KNPNJKLWP4vJtdOBxeWE_NY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "317918145023-mh0cunqb4r23uveio34fs842vtcp6biv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

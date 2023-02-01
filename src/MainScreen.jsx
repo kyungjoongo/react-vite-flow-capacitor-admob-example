@@ -12,6 +12,7 @@ import {Toast} from '@capacitor/toast';
 import {Haptics, ImpactStyle} from "@capacitor/haptics";
 import axios from "axios";
 import _ from 'lodash'
+import {CapacitorVideoPlayer} from "capacitor-video-player";
 
 export default function MainScreen(props) {
     useEffect(() => {
@@ -24,9 +25,9 @@ export default function MainScreen(props) {
             setLoading(true)
             const response: any = await axios.get('https://jsonplaceholder.typicode.com/posts');
             sharedService.results = response.data;
-            setTimeout(()=>{
+            setTimeout(() => {
                 setLoading(false)
-            },300)
+            }, 300)
         }
     };
 
@@ -99,21 +100,19 @@ export default function MainScreen(props) {
                     <AButton title={'push'} onClick={() => {
                         navigate('/DetailScreen')
                     }}>
-                        push
+                        pushasasdads
                     </AButton>
                 </View>
-                <View style={{marginTop:10,}}>
-                    <AButton title={'push2'} onClick={() => {
-                        navigate('/BiometricScreen')
+                <View style={{marginTop: 10,}}>
+                    <AButton title={'CastScreen'} onClick={async () => {
+                        const init = await CapacitorVideoPlayer.initPlayer({
+                            mode: "fullscreen",
+                            url: 'https://brenopolanski.github.io/html5-video-webvtt-example/MIB2.mp4',
+                            playerId: "fullscreen",
+                            componentTag: "div"
+                        })
                     }}>
-                        BiometricScreen
-                    </AButton>
-                </View>
-                <View style={{marginTop:10,}}>
-                    <AButton title={'CastScreen'} onClick={() => {
-                        navigate('/CastScreen')
-                    }}>
-                        CastScreen222
+                        youtube
                     </AButton>
                 </View>
                 <View style={{height: 50}}/>
@@ -123,7 +122,7 @@ export default function MainScreen(props) {
                     }}>
                         showInitAdmob
                     </AButton>
-                    <View style={{height:30,}}/>
+                    <View style={{height: 30,}}/>
                     <AButton type={"primary"} onClick={() => {
                         showInitAdmob();
                     }}>
