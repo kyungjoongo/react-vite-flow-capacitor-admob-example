@@ -20,8 +20,8 @@ project(':capacitor-haptics').projectDir = new File('../node_modules/@capacitor/
 include ':capacitor-toast'
 project(':capacitor-toast').projectDir = new File('../node_modules/@capacitor/toast/android')
 
-include ':capacitor-youtube-player'
-project(':capacitor-youtube-player').projectDir = new File('../node_modules/capacitor-youtube-player/android')
+include ':capacitor-video-player'
+project(':capacitor-video-player').projectDir = new File('../node_modules/capacitor-video-player/android')
 
 include ':capacitor4-fingerprint-auth'
 project(':capacitor4-fingerprint-auth').projectDir = new File('../node_modules/capacitor4-fingerprint-auth/android/capacitor4-fingerprint-auth')

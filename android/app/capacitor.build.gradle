@@ -15,7 +15,7 @@ dependencies {
     implementation project(':capacitor-dialog')
     implementation project(':capacitor-haptics')
     implementation project(':capacitor-toast')
-    implementation project(':capacitor-youtube-player')
+    implementation project(':capacitor-video-player')
     implementation project(':capacitor4-fingerprint-auth')
 
 }

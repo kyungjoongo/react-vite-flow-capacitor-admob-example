@@ -6,7 +6,7 @@
 
     <queries>
         <intent>
-            <action android:name="com.google.android.youtube.api.service.START" />
+            <action android:name="com.google.android.youtube.api.service.START"/>
         </intent>
     </queries>
     <application
@@ -28,6 +28,8 @@
             android:label="@string/title_activity_main"
             android:theme="@style/AppTheme.NoActionBarLaunch"
             android:launchMode="singleTask"
+            android:resizeableActivity="true"
+            android:supportsPictureInPicture="true"
             android:exported="true">
 
             <intent-filter>
@@ -50,6 +52,10 @@
             android:name="com.google.android.gms.ads.APPLICATION_ID"
             android:value="ca-app-pub-6826082357124500~6062405309"
         />
+        <!--cast-->
+        <meta-data
+            android:name="com.google.android.gms.cast.framework.OPTIONS_PROVIDER_CLASS_NAME"
+            android:value="com.google.android.exoplayer2.ext.cast.DefaultCastOptionsProvider"/>
 
     </application>
 
@@ -57,6 +63,7 @@
     <uses-permission android:name="android.permission.CAMERA"/>
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.USE_BIOMETRIC"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
     <!--sdk-->
     <uses-sdk tools:overrideLibrary="com.google.zxing.client.android"/>
 

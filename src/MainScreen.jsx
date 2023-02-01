@@ -109,6 +109,13 @@ export default function MainScreen(props) {
                         BiometricScreen
                     </AButton>
                 </View>
+                <View style={{marginTop:10,}}>
+                    <AButton title={'CastScreen'} onClick={() => {
+                        navigate('/CastScreen')
+                    }}>
+                        CastScreen222
+                    </AButton>
+                </View>
                 <View style={{height: 50}}/>
                 <View style={{justifyContent: "space-between", margin: 30,}}>
                     <AButton type={"primary"} onClick={() => {

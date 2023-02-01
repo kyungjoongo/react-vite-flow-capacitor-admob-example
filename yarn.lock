@@ -1541,7 +1541,7 @@
   dependencies:
     "@types/istanbul-lib-report" "*"
 
-"@types/node@*", "@types/node@^18.11.9":
+"@types/node@*":
   version "18.11.18"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-18.11.18.tgz#8dfb97f0da23c2293e554c5a50d61ef134d7697f"
   integrity sha512-DHQpWGjyQKSHj3ebjFI/wRKcqQcdR+MoFBygntYOZytCqNfkd2ZC4ARDJ2DQqhjH5p85Nnd3jhUJIXrszFX/JA==
@@ -2085,12 +2085,10 @@ caniuse-lite@^1.0.30001400:
   resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001449.tgz#a8d11f6a814c75c9ce9d851dc53eb1d1dfbcd657"
   integrity sha512-CPB+UL9XMT/Av+pJxCKGhdx+yg1hzplvFJQlJ2n68PyQGMz9L/E2zCyLdOL8uasbouTUgnPl+y0tccI/se+BEw==
 
-capacitor-youtube-player@^1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/capacitor-youtube-player/-/capacitor-youtube-player-1.1.0.tgz#724379973ea2a153d4d0ce08312dbf17551e6bdf"
-  integrity sha512-DTQ63T401oRk6NBx2eU2li6UcsvaX7kMeNuas0LNeQ2xm+Ne/7TZ9pcHIPr8Z8e+iHK5R+D88W3MSKxgca9efA==
-  dependencies:
-    "@types/node" "^18.11.9"
+capacitor-video-player@4.6.2-1:
+  version "4.6.2-1"
+  resolved "https://registry.yarnpkg.com/capacitor-video-player/-/capacitor-video-player-4.6.2-1.tgz#4a875f6cf221419b4117eb24df2ba4e909e6d429"
+  integrity sha512-TJU+/29eAtYo+tIuhHXKz9ZoF3EMD6IGsBMTYwmqxy2GtabxFiasua3njOy+3A2CI7E9gZXffUZk9JSr0otaoA==
 
 capacitor4-fingerprint-auth@0.1.1:
   version "0.1.1"
@@ -3005,6 +3003,16 @@ hermes-profile-transformer@^0.0.6:
   integrity sha512-cnN7bQUm65UWOy6cbGcCcZ3rpwW8Q/j4OP5aWRhEry4Z2t2aR1cjrbp0BS+KiBN0smvP1caBgAuxutvyvJILzQ==
   dependencies:
     source-map "^0.7.3"
+
+hls.js@^1.3.2:
+  version "1.3.2"
+  resolved "https://registry.yarnpkg.com/hls.js/-/hls.js-1.3.2.tgz#bf3e46f71dddadfe7ce1d0b372b36e5617736110"
+  integrity sha512-qb9xNRBnYoNuJfACsolKzlzNxl0ietBxC6Aa1H45GZTkmg3XjEc7gfXThCINCw/0F+sm3n0x1m4toqWecxjWwA==
+
+hls@^0.0.1:
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/hls/-/hls-0.0.1.tgz#3433be0d4b1305db312c966527fbb156e7ed79ca"
+  integrity sha512-ov6aIzckaDCdFFAeJbrmZYhAR0O7w+nDXh3fz9XEcf8P6EercldLht/23JHRFXmAMtvKw8dzuOCafzktdV1AZw==
 
 http-errors@2.0.0:
   version "2.0.0"

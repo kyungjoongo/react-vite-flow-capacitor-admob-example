@@ -8,6 +8,7 @@ import { App } from '@capacitor/app';
 import QrScannerScreen from "./QrScannerScreen";
 import YoutubeScreen from "./YoutubeScreen";
 import BiometricScreen from "./BiometricScreen";
+import CastScreen from "./CastScreen";
 
 App.addListener('backButton', ({ canGoBack }) => {
     if(canGoBack){
@@ -34,6 +35,7 @@ function MainApp() {
                     <Routes>
                         <Route path="/" element={<MainScreen/>}/>
                         <Route path="/DetailScreen" element={<DetailScreen/>}/>
+                        <Route path="/CastScreen" element={<CastScreen/>}/>
                         <Route path="/QrScannerScreen" element={<QrScannerScreen/>}/>
                         <Route path="/YoutubeScreen" element={<YoutubeScreen/>}/>
                         <Route path="/BiometricScreen" element={<BiometricScreen/>}/>
