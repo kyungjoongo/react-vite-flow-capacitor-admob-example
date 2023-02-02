@@ -8,11 +8,15 @@ import {AdMob, InterstitialAdPluginEvents} from "@capacitor-community/admob";
 import sharedService, {initializeAdmob, showBanner} from "./initAdmob";
 import {Capacitor} from "@capacitor/core";
 import {BarcodeScanner} from "@capacitor-community/barcode-scanner";
-import {Toast} from '@capacitor/toast';
 import {Haptics, ImpactStyle} from "@capacitor/haptics";
 import axios from "axios";
 import _ from 'lodash'
 import {CapacitorVideoPlayer} from "capacitor-video-player";
+import {SpinnerDialog} from '@awesome-cordova-plugins/spinner-dialog'
+import {ActionSheet} from '@awesome-cordova-plugins/action-sheet'
+import {YoutubeVideoPlayer} from '@awesome-cordova-plugins/youtube-video-player'
+import {Toast} from '@capacitor/toast';
+
 
 export default function MainScreen(props) {
     useEffect(() => {
@@ -126,7 +130,38 @@ export default function MainScreen(props) {
                     <AButton type={"primary"} onClick={() => {
                         showInitAdmob();
                     }}>
-                        showInitAdmob
+                        admob
+                    </AButton>
+                    <View style={{height: 30,}}/>
+                    <AButton type={"dashed"} onClick={async () => {
+                        //SpinnerDialog.show("lkslkflsklfkaslkdflasdkf", "message");
+                        var options = {
+                            androidTheme: window.plugins.actionsheet.ANDROID_THEMES.THEME_DEVICE_DEFAULT_DARK, // default is THEME_TRADITIONAL
+                            //androidTheme: ActionSheet.ANDROID_THEMES.THEME_HOLO_DARK,
+                            title: 'What do you want with this image?',
+                            subtitle: 'Choose wisely, my friend', // supported on iOS only
+                            buttonLabels: ['고경준천재님', '종근이 싸가비 없는 새꺄!'],
+                            androidEnableCancelButton: true, // default false
+                            winphoneEnableCancelButton: true, // default false
+                            addCancelButtonWithLabel: '취소',
+                            //addDestructiveButtonWithLabel: 'Delete it',
+                            position: [20, 40], // for iPad pass in the [x, y] position of the popover
+                            //destructiveButtonLast: true // you can choose where the destructive button is shown
+                        };
+                        // Depending on the buttonIndex, you can now call shareViaFacebook or shareViaTwitter
+                        // of the SocialSharing plugin (https://github.com/EddyVerbruggen/SocialSharing-PhoneGap-Plugin)
+                        await ActionSheet.show(options, (res) => {
+                            alert(res)
+                        })
+                    }}>
+                        ActionSheet
+                    </AButton>
+                    <AButton type={"dashed"} onClick={async () => {
+                        await Toast.show({
+                            text: 'Hello!',
+                        });
+                    }}>
+                        Toast222222
                     </AButton>
                     <View style={{height: 20}}/>
                     <AButton type={"primary"} onClick={async () => {
@@ -136,12 +171,12 @@ export default function MainScreen(props) {
                     </AButton>
                     <View style={{height: 20}}/>
                     <AButton type={"primary"} onClick={async () => {
-                        await Toast.show({
-                            text: 'kyungjoon is genis!',
-                            position: "center",
+                        YoutubeVideoPlayer.openVideo('Dmn7tTaNM-I', (result) => {
+                            alert(JSON.stringify(result))
                         });
+
                     }}>
-                        startScan
+                        youtubr!!asdasdasdasdasd
                     </AButton>
                     <View style={{height: 20}}/>
                     <AButton type={"primary"} onClick={async () => {

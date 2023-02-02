@@ -10,6 +10,11 @@
         "preview": "vite preview"
     },
     "dependencies": {
+        "@awesome-cordova-plugins/action-sheet": "^6.3.0",
+        "@awesome-cordova-plugins/core": "^6.3.0",
+        "@awesome-cordova-plugins/spinner-dialog": "^6.3.0",
+        "@awesome-cordova-plugins/toast": "^6.3.0",
+        "@awesome-cordova-plugins/youtube-video-player": "^6.3.0",
         "@capacitor-community/admob": "^4.1.0",
         "@capacitor-community/barcode-scanner": "^3.0.1",
         "@capacitor/android": "^4.6.2",
@@ -27,6 +32,10 @@
         "axios": "^1.2.6",
         "capacitor-video-player": "4.6.2-1",
         "capacitor4-fingerprint-auth": "0.1.1",
+        "cordova-plugin-actionsheet": "^2.3.3",
+        "cordova-plugin-native-spinner": "^1.1.4",
+        "cordova-plugin-x-toast": "^2.7.3",
+        "cordova-plugin-youtube-video-player": "^2.4.0",
         "firebase-admin": "^11.5.0",
         "flow-bin": "^0.198.2",
         "hls": "^0.0.1",
@@ -43,6 +52,7 @@
         "react-router": "6.8.0",
         "react-router-dom": "6.8.0",
         "react-youtube": "^10.1.0",
+        "rxjs": "^7.8.0",
         "youtube-extractor": "^1.0.2"
     },
     "devDependencies": {
