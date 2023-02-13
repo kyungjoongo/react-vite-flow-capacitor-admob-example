@@ -1,15 +1,11 @@
 // @flow
 import React, {useEffect, useState} from 'react'
 import './App.css'
-import {BrowserRouter as Router, Route,} from "react-router-dom";
+import {Route,} from "react-router-dom";
 import MainScreen from "./MainScreen";
 import DetailScreen from "./DetailScreen";
 import {ConfigProvider} from "antd";
 import {App} from '@capacitor/app';
-import QrScannerScreen from "./QrScannerScreen";
-import YoutubeScreen from "./YoutubeScreen";
-import BiometricScreen from "./BiometricScreen";
-import CastScreen from "./CastScreen";
 import {PushNotifications} from '@capacitor/push-notifications';
 import {IonApp, IonRouterOutlet, setupIonicReact} from '@ionic/react';
 /* Core CSS required for Ionic components to work properly */
@@ -30,16 +26,21 @@ import '@ionic/react/css/display.css';
 /* Theme variables */
 import './theme/variables.css';
 import {IonReactRouter} from "@ionic/react-router";
-import Tab1 from "./Tab1.jsx";
-import Tab2 from "./Tab2.jsx";
+import {Dialog} from "@capacitor/dialog";
 
 setupIonicReact();
 
-App.addListener('backButton', ({canGoBack}) => {
+App.addListener('backButton',async ({canGoBack}) => {
     if (canGoBack) {
         window.history.back();
     } else {
-        App.exitApp();
+        const { value } = await Dialog.confirm({
+            title: 'Confirm',
+            message: `정말 얍을 종료?`,
+        });
+        if (value){
+            await App.exitApp();
+        }
     }
 });
 
@@ -101,15 +102,6 @@ function MainApp() {
                 },
             }}
         >
-            {/*<Router>*/}
-
-            {/*    <div className="container">*/}
-            {/*        <Routes>*/}
-
-            {/*        </Routes>*/}
-            {/*    </div>*/}
-
-            {/*</Router>*/}
             <IonApp>
                 <IonReactRouter>
                     <IonRouterOutlet>

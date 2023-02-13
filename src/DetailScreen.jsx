@@ -29,14 +29,17 @@ export default function DetailScreen() {
             <IonPage>
                 <IonHeader>
                     <IonToolbar>
-                        <View style={{flexDirection: "row"}}>
-                            <TouchableOpacity onPress={() => {
+                        <TouchableOpacity
+                            style={{flexDirection: "row"}}
+                            onPress={() => {
                                 history.goBack();
-                            }}>
+                            }}
+                        >
+                            <View>
                                 <div style={{fontSize: 35, marginTop: -5, marginLeft: 3}}>&nbsp;{`<`}</div>
-                            </TouchableOpacity>
+                            </View>
                             <IonTitle>상세 화면 입니다sdlfksdlkflkdsf</IonTitle>
-                        </View>
+                        </TouchableOpacity>
                     </IonToolbar>
                 </IonHeader>
                 <IonContent fullscreen>
