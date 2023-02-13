@@ -1,7 +1,7 @@
 // @flow
 import React, {useEffect} from 'react'
 import './App.css'
-import {useNavigate} from "react-router";
+//import {useNavigate} from "react-router";
 import {BarcodeScanner} from "@capacitor-community/barcode-scanner";
 import {View, Button} from "react-native-web";
 import {Toast} from '@capacitor/toast';
@@ -24,7 +24,7 @@ export default function QrScannerScreen(props) {
 
 
 
-    const navigate = useNavigate();
+    //const navigate = useNavigate();
 
     const startScan = async () => {
         // Check camera permission

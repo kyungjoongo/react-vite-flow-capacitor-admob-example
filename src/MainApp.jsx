@@ -1,7 +1,7 @@
 // @flow
 import React, {useEffect, useState} from 'react'
 import './App.css'
-import {BrowserRouter as Router, Route, Routes} from "react-router-dom";
+import {BrowserRouter as Router, Route,} from "react-router-dom";
 import MainScreen from "./MainScreen";
 import DetailScreen from "./DetailScreen";
 import {ConfigProvider} from "antd";
@@ -11,6 +11,29 @@ import YoutubeScreen from "./YoutubeScreen";
 import BiometricScreen from "./BiometricScreen";
 import CastScreen from "./CastScreen";
 import {PushNotifications} from '@capacitor/push-notifications';
+import {IonApp, IonRouterOutlet, setupIonicReact} from '@ionic/react';
+/* Core CSS required for Ionic components to work properly */
+import '@ionic/react/css/core.css';
+
+/* Basic CSS for apps built with Ionic */
+import '@ionic/react/css/normalize.css';
+import '@ionic/react/css/structure.css';
+import '@ionic/react/css/typography.css';
+
+/* Optional CSS utils that can be commented out */
+import '@ionic/react/css/padding.css';
+import '@ionic/react/css/float-elements.css';
+import '@ionic/react/css/text-alignment.css';
+import '@ionic/react/css/text-transformation.css';
+import '@ionic/react/css/flex-utils.css';
+import '@ionic/react/css/display.css';
+/* Theme variables */
+import './theme/variables.css';
+import {IonReactRouter} from "@ionic/react-router";
+import Tab1 from "./Tab1.jsx";
+import Tab2 from "./Tab2.jsx";
+
+setupIonicReact();
 
 App.addListener('backButton', ({canGoBack}) => {
     if (canGoBack) {
@@ -19,6 +42,7 @@ App.addListener('backButton', ({canGoBack}) => {
         App.exitApp();
     }
 });
+
 
 function MainApp() {
     const [count, setCount] = useState(0)
@@ -77,22 +101,30 @@ function MainApp() {
                 },
             }}
         >
-            <Router>
+            {/*<Router>*/}
 
-                <div className="container">
-                    <Routes>
-                        <Route path="/" element={<MainScreen/>}/>
-                        <Route path="/DetailScreen" element={<DetailScreen/>}/>
-                        <Route path="/CastScreen" element={<CastScreen/>}/>
-                        <Route path="/QrScannerScreen" element={<QrScannerScreen/>}/>
-                        <Route path="/YoutubeScreen" element={<YoutubeScreen/>}/>
-                        <Route path="/BiometricScreen" element={<BiometricScreen/>}/>
-                    </Routes>
-                </div>
+            {/*    <div className="container">*/}
+            {/*        <Routes>*/}
 
-            </Router>
+            {/*        </Routes>*/}
+            {/*    </div>*/}
+
+            {/*</Router>*/}
+            <IonApp>
+                <IonReactRouter>
+                    <IonRouterOutlet>
+                        {/*<Route exact path="/" component={Tab1}/>*/}
+                        {/*<Route exact path="/Tab2" component={Tab2}/>*/}
+                        <Route exact path="/" component={MainScreen}/>
+                        <Route path="/DetailScreen" component={DetailScreen}/>
+                        {/*<Route path="/CastScreen" component={<CastScreen/>}/>*/}
+                        {/*<Route path="/QrScannerScreen" component={<QrScannerScreen/>}/>*/}
+                        {/*<Route path="/YoutubeScreen" component={<YoutubeScreen/>}/>*/}
+                        {/*<Route path="/BiometricScreen" component={<BiometricScreen/>}/>*/}
+                    </IonRouterOutlet>
+                </IonReactRouter>
+            </IonApp>
         </ConfigProvider>
-
     )
 }
 

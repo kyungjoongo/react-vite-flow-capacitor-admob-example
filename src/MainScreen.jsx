@@ -2,7 +2,6 @@
 import React, {useEffect, useState} from 'react'
 import './App.css'
 import {ScrollView, View} from "react-native-web";
-import {useNavigate} from "react-router";
 import {Button as AButton, Spin} from 'antd'
 import {AdMob, InterstitialAdPluginEvents} from "@capacitor-community/admob";
 import sharedService, {initializeAdmob, showBanner} from "./initAdmob";
@@ -15,7 +14,8 @@ import {CapacitorVideoPlayer} from "capacitor-video-player";
 import {ActionSheet} from '@awesome-cordova-plugins/action-sheet'
 import {YoutubeVideoPlayer} from '@awesome-cordova-plugins/youtube-video-player'
 import {Toast} from '@capacitor/toast';
-
+import {IonContent, IonHeader, IonPage, IonTitle, IonToolbar} from "@ionic/react";
+import {useHistory} from "react-router";
 
 export default function MainScreen(props) {
     useEffect(() => {
@@ -61,7 +61,6 @@ export default function MainScreen(props) {
         await AdMob.showInterstitial();
     }
 
-    const navigate = useNavigate();
 
     const startScan = async () => {
         // Check camera permission
@@ -92,111 +91,122 @@ export default function MainScreen(props) {
         // alert(value)
     };
 
+    const history= useHistory();
+
 
     return (
-        <div className="App">
-            <div>
-                <a href="https://vitejs.dev" target="_blank">
-                    <img src="/vite.svg" className="logo" alt="Vite logo"/>
-                </a>
-                <View>
-                    <AButton title={'push'} onClick={() => {
-                        navigate('/DetailScreen')
-                    }}>
-                        pushasasdads
-                    </AButton>
-                </View>
-                <View style={{marginTop: 10,}}>
-                    <AButton title={'CastScreen'} onClick={async () => {
-                        const init = await CapacitorVideoPlayer.initPlayer({
-                            mode: "fullscreen",
-                            url: 'https://brenopolanski.github.io/html5-video-webvtt-example/MIB2.mp4',
-                            playerId: "fullscreen",
-                            componentTag: "div"
-                        })
-                    }}>
-                        youtube
-                    </AButton>
-                </View>
-                <View style={{height: 50}}/>
-                <View style={{justifyContent: "space-between", margin: 30,}}>
-                    <AButton type={"primary"} onClick={() => {
-                        showInitAdmob();
-                    }}>
-                        showInitAdmob
-                    </AButton>
-                    <View style={{height: 30,}}/>
-                    <AButton type={"primary"} onClick={() => {
-                        showInitAdmob();
-                    }}>
-                        admob
-                    </AButton>
-                    <View style={{height: 30,}}/>
-                    <AButton type={"dashed"} onClick={async () => {
-                        //SpinnerDialog.show("lkslkflsklfkaslkdflasdkf", "message");
-                        var options = {
-                            androidTheme: window.plugins.actionsheet.ANDROID_THEMES.THEME_DEVICE_DEFAULT_DARK, // default is THEME_TRADITIONAL
-                            //androidTheme: ActionSheet.ANDROID_THEMES.THEME_HOLO_DARK,
-                            title: 'What do you want with this image?',
-                            subtitle: 'Choose wisely, my friend', // supported on iOS only
-                            buttonLabels: ['고경준천재님', 'asdasd asdasd!'],
-                            androidEnableCancelButton: true, // default false
-                            winphoneEnableCancelButton: true, // default false
-                            addCancelButtonWithLabel: '취소',
-                            //addDestructiveButtonWithLabel: 'Delete it',
-                            position: [20, 40], // for iPad pass in the [x, y] position of the popover
-                            //destructiveButtonLast: true // you can choose where the destructive button is shown
-                        };
-                        // Depending on the buttonIndex, you can now call shareViaFacebook or shareViaTwitter
-                        // of the SocialSharing plugin (https://github.com/EddyVerbruggen/SocialSharing-PhoneGap-Plugin)
-                        await ActionSheet.show(options, (res) => {
-                        })
-                    }}>
-                        ActionSheet
-                    </AButton>
-                    <AButton type={"dashed"} onClick={async () => {
-                        await Toast.show({
-                            text: 'Hello!',
-                        });
-                    }}>
-                        Toast222222
-                    </AButton>
-                    <View style={{height: 20}}/>
-                    <AButton type={"primary"} onClick={async () => {
-                        navigate('/QrScannerScreen')
-                    }}>
-                        startScan
-                    </AButton>
-                    <View style={{height: 20}}/>
-                    <AButton type={"primary"} onClick={async () => {
-                        YoutubeVideoPlayer.openVideo('Dmn7tTaNM-I', (result) => {
-                            alert(JSON.stringify(result))
-                        });
+        <IonPage>
+            <IonHeader>
+                <IonToolbar>
+                    <IonTitle>Tab 1asdasdas</IonTitle>
+                </IonToolbar>
+            </IonHeader>
+            <IonContent fullscreen>
+                <div className="App">
+                    <div>
+                        <a href="https://vitejs.dev" target="_blank">
+                            <img src="/vite.svg" className="logo" alt="Vite logo"/>
+                        </a>
+                        <View>
+                            <AButton title={'push'} onClick={() => {
+                                history.push('./DetailScreen')
+                            }}>
+                                DetailScreen
+                            </AButton>
+                        </View>
+                        <View style={{marginTop: 10,}}>
+                            <AButton title={'CastScreen'} onClick={async () => {
+                                const init = await CapacitorVideoPlayer.initPlayer({
+                                    mode: "fullscreen",
+                                    url: 'https://brenopolanski.github.io/html5-video-webvtt-example/MIB2.mp4',
+                                    playerId: "fullscreen",
+                                    componentTag: "div"
+                                })
+                            }}>
+                                youtube
+                            </AButton>
+                        </View>
+                        <View style={{height: 50}}/>
+                        <View style={{justifyContent: "space-between", margin: 30,}}>
+                            <AButton type={"primary"} onClick={() => {
+                                showInitAdmob();
+                            }}>
+                                showInitAdmob
+                            </AButton>
+                            <View style={{height: 30,}}/>
+                            <AButton type={"primary"} onClick={() => {
+                                showInitAdmob();
+                            }}>
+                                admob
+                            </AButton>
+                            <View style={{height: 30,}}/>
+                            <AButton type={"dashed"} onClick={async () => {
+                                //SpinnerDialog.show("lkslkflsklfkaslkdflasdkf", "message");
+                                var options = {
+                                    androidTheme: window.plugins.actionsheet.ANDROID_THEMES.THEME_DEVICE_DEFAULT_DARK, // default is THEME_TRADITIONAL
+                                    //androidTheme: ActionSheet.ANDROID_THEMES.THEME_HOLO_DARK,
+                                    title: 'What do you want with this image?',
+                                    subtitle: 'Choose wisely, my friend', // supported on iOS only
+                                    buttonLabels: ['고경준천재님', 'asdasd asdasd!'],
+                                    androidEnableCancelButton: true, // default false
+                                    winphoneEnableCancelButton: true, // default false
+                                    addCancelButtonWithLabel: '취소',
+                                    //addDestructiveButtonWithLabel: 'Delete it',
+                                    position: [20, 40], // for iPad pass in the [x, y] position of the popover
+                                    //destructiveButtonLast: true // you can choose where the destructive button is shown
+                                };
+                                // Depending on the buttonIndex, you can now call shareViaFacebook or shareViaTwitter
+                                // of the SocialSharing plugin (https://github.com/EddyVerbruggen/SocialSharing-PhoneGap-Plugin)
+                                await ActionSheet.show(options, (res) => {
+                                })
+                            }}>
+                                ActionSheet
+                            </AButton>
+                            <AButton type={"dashed"} onClick={async () => {
+                                await Toast.show({
+                                    text: 'Hello!',
+                                });
+                            }}>
+                                Toast222222
+                            </AButton>
+                            <View style={{height: 20}}/>
+                            <AButton type={"primary"} onClick={async () => {
+                                history.push('/QrScannerScreen')
+                            }}>
+                                startScan
+                            </AButton>
+                            <View style={{height: 20}}/>
+                            <AButton type={"primary"} onClick={async () => {
+                                YoutubeVideoPlayer.openVideo('Dmn7tTaNM-I', (result) => {
+                                    alert(JSON.stringify(result))
+                                });
 
-                    }}>
-                        youtubr!!asdasdasdasdasd
-                    </AButton>
-                    <View style={{height: 20}}/>
-                    <AButton type={"primary"} onClick={async () => {
-                        showConfirm()
-                    }}>
-                        showConfirm
-                    </AButton>
-                </View>
-                {<View style={{height: 350,}}>
-                    {loading && <Spin size={'large'}/>}
-                    <ScrollView>
-                        {!loading && sharedService.results.map((item, index) => {
-                            return (
-                                <View key={index.toString()}>
-                                    <div>{item.title}</div>
-                                </View>
-                            )
-                        })}
-                    </ScrollView>
-                </View>}
-            </div>
-        </div>
+                            }}>
+                                youtubr!!asdasdasdasdasd
+                            </AButton>
+                            <View style={{height: 20}}/>
+                            <AButton type={"primary"} onClick={async () => {
+                                showConfirm()
+                            }}>
+                                showConfirm
+                            </AButton>
+                        </View>
+                        {<View style={{height: 350,}}>
+                            {loading && <Spin size={'large'}/>}
+                            <ScrollView>
+                                {!loading && sharedService.results.map((item, index) => {
+                                    return (
+                                        <View key={index.toString()}>
+                                            <div>{item.title}</div>
+                                        </View>
+                                    )
+                                })}
+                            </ScrollView>
+                        </View>}
+                    </div>
+                </div>
+            </IonContent>
+        </IonPage>
     )
 }
 
