@@ -12,7 +12,6 @@ import {Haptics, ImpactStyle} from "@capacitor/haptics";
 import axios from "axios";
 import _ from 'lodash'
 import {CapacitorVideoPlayer} from "capacitor-video-player";
-import {SpinnerDialog} from '@awesome-cordova-plugins/spinner-dialog'
 import {ActionSheet} from '@awesome-cordova-plugins/action-sheet'
 import {YoutubeVideoPlayer} from '@awesome-cordova-plugins/youtube-video-player'
 import {Toast} from '@capacitor/toast';
@@ -140,7 +139,7 @@ export default function MainScreen(props) {
                             //androidTheme: ActionSheet.ANDROID_THEMES.THEME_HOLO_DARK,
                             title: 'What do you want with this image?',
                             subtitle: 'Choose wisely, my friend', // supported on iOS only
-                            buttonLabels: ['고경준천재님', '종근이 싸가비 없는 새꺄!'],
+                            buttonLabels: ['고경준천재님', 'asdasd asdasd!'],
                             androidEnableCancelButton: true, // default false
                             winphoneEnableCancelButton: true, // default false
                             addCancelButtonWithLabel: '취소',
@@ -151,7 +150,6 @@ export default function MainScreen(props) {
                         // Depending on the buttonIndex, you can now call shareViaFacebook or shareViaTwitter
                         // of the SocialSharing plugin (https://github.com/EddyVerbruggen/SocialSharing-PhoneGap-Plugin)
                         await ActionSheet.show(options, (res) => {
-                            alert(res)
                         })
                     }}>
                         ActionSheet

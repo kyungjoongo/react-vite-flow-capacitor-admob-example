@@ -6,6 +6,7 @@
     "scripts": {
         "dev": "vite --host 0.0.0.0 --port 3000",
         "android": " npx cap run android -l --external ",
+        "ios": " npx cap run ios -l --external --target 8DE762BA-F40A-46BA-8845-07D22C13EBE4 ",
         "build": "vite build",
         "preview": "vite preview"
     },

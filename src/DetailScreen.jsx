@@ -3,12 +3,12 @@ import './App.css'
 import {useNavigate} from "react-router";
 import React from 'react'
 import {Modal, Button} from "antd";
+import {SafeAreaView, Text, TouchableOpacity, View} from "react-native-web";
 
 export default function DetailScreen() {
     const [count, setCount] = useState(0)
     const navigate = useNavigate();
     const [isModalOpen, setIsModalOpen] = useState(false);
-
     const showModal = () => {
         setIsModalOpen(true);
     };
@@ -22,7 +22,29 @@ export default function DetailScreen() {
     };
 
     return (
-        <div className="App">
+        <div style={{flex: 1, height: '100%'}}>
+            <TouchableOpacity
+                style={{
+                    position: "absolute",
+                    top: 50,
+                    width: '100%',
+                    backgroundColor: 'orange',
+                    left: 0,
+                    height: 40,
+                    alignSelf: 'center',
+                    justifyContent: 'center',
+                    flexDirection: 'row',
+                }}
+                onPress={() => {
+                    navigate(-1);
+                }}>
+                <View style={{flex: .1, justifyContent: 'center'}}>
+                    <Text style={{fontSize: 40, marginTop: -6}}>{`<`}</Text>
+                </View>
+                <View style={{flex: .9, justifyContent: 'center'}}>
+                    <Text>상세</Text>
+                </View>
+            </TouchableOpacity>
             <div>
                 DetailScreeen
             </div>
