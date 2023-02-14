@@ -1,22 +1,20 @@
 // @flow
 import React, {useEffect, useState} from 'react'
 import './App.css'
-import {ActivityIndicator, ScrollView, View} from "react-native-web";
+import {ScrollView, View} from "react-native-web";
 import {Button as AButton, Spin} from 'antd'
 import {AdMob, InterstitialAdPluginEvents} from "@capacitor-community/admob";
-import sharedService, {initializeAdmob, showBanner} from "./initAdmob";
+import sharedService, {initializeAdmob} from "./initAdmob";
 import {Capacitor} from "@capacitor/core";
 import {BarcodeScanner} from "@capacitor-community/barcode-scanner";
 import {Haptics, ImpactStyle} from "@capacitor/haptics";
 import axios from "axios";
 import _ from 'lodash'
 import {CapacitorVideoPlayer} from "capacitor-video-player";
-import {ActionSheet} from '@awesome-cordova-plugins/action-sheet'
 import {YoutubeVideoPlayer} from '@awesome-cordova-plugins/youtube-video-player'
 import {Toast} from '@capacitor/toast';
 import {IonActionSheet, IonContent, IonHeader, IonInput, IonItem, IonPage, IonTitle, IonToolbar} from "@ionic/react";
 import {useHistory} from "react-router";
-import BiometricScreen from "./BiometricScreen.jsx";
 import {FingerPrintAuth} from "capacitor4-fingerprint-auth";
 
 export default function MainScreen(props) {
