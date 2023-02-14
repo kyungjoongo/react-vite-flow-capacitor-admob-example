@@ -6,8 +6,7 @@ admin.initializeApp({
     //credential: applicationDefault()
 })
 
-let target_token = 'fDmgDYtITw-QuSt7F3m6Ya:APA91bHgQ7UdHt80HqRD9nY3jZa2abzsGJDZChi_Idne51Io5I_PI7-fxr2_0nS67qlgSnwujzPAsd3URcanyKwgWI_3WDMmfuuNGZSXKUABYefpWlOfe45x1rFi7nNio0-cWqpxkzN_'
-
+let target_token = 'dClBIr1EQ_emkJolV1ylvC:APA91bGY_9Z3xAaQKxJYBnWB6mF1I0loIEyPs0XKAzVw3Smy3WFCBhzYzDxF4VcW6KkhS19RcYlg-6-3_--sF4Purj4xGO1UALSP73EuADK5q4tNpV992NLbFJIAYjOdhmnDfp2FY0gu'
 
 let payload = {
     data: {
@@ -16,17 +15,20 @@ let payload = {
     },
     notification: {
         title: 'My Title__푸시메세지입니ㅏㄷsdlkflsdkflkdsflk!33333',
-        body : 'TEST'
-    }
+        body: 'TEST'
+    },
+    //condition: "!('anytopicyoudontwanttouse' in topics)"
+    //condition: "'all' in topics || 'android' in topics || 'ios' in topics"
+
 }
 
-// admin.messaging().send(message).then(function (response) {
+// admin.messaging().send(payload).then(function (response) {
 //     console.log('Successfully sent message: : ', response)
 // }).catch(function (err) {
 //     console.log('Error Sending message!!! : ', err)
 // })
 
-admin.messaging().sendToDevice(target_token, payload).then(res => {
+admin.messaging().sendToDevice([target_token], payload).then(res => {
     console.log("Successfully===>", res);
 }).catch(e => {
 

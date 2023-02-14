@@ -90,7 +90,6 @@ function MainApp() {
             //throw new Error();
             alert('push 퍼미션이 없당!')
         }
-
         await PushNotifications.register();
     }
 
