@@ -1,7 +1,7 @@
 // @flow
 import React, {useEffect, useState} from 'react'
 import './App.css'
-import {ScrollView, View} from "react-native-web";
+import {ActivityIndicator, ScrollView, View} from "react-native-web";
 import {Button as AButton, Spin} from 'antd'
 import {AdMob, InterstitialAdPluginEvents} from "@capacitor-community/admob";
 import sharedService, {initializeAdmob, showBanner} from "./initAdmob";
@@ -14,8 +14,10 @@ import {CapacitorVideoPlayer} from "capacitor-video-player";
 import {ActionSheet} from '@awesome-cordova-plugins/action-sheet'
 import {YoutubeVideoPlayer} from '@awesome-cordova-plugins/youtube-video-player'
 import {Toast} from '@capacitor/toast';
-import {IonContent, IonHeader, IonPage, IonTitle, IonToolbar} from "@ionic/react";
+import {IonActionSheet, IonContent, IonHeader, IonInput, IonItem, IonPage, IonTitle, IonToolbar} from "@ionic/react";
 import {useHistory} from "react-router";
+import BiometricScreen from "./BiometricScreen.jsx";
+import {FingerPrintAuth} from "capacitor4-fingerprint-auth";
 
 export default function MainScreen(props) {
     useEffect(() => {
@@ -42,7 +44,7 @@ export default function MainScreen(props) {
         doGet();
         if (Capacitor.getPlatform() === 'android') {
             await initializeAdmob();
-            await showBanner();
+            //await showBanner();
         }
 
     }
@@ -91,8 +93,46 @@ export default function MainScreen(props) {
         // alert(value)
     };
 
-    const history= useHistory();
+    const history = useHistory();
 
+    async function performBiometricVerificatin() {
+
+        try {
+            const fingerPrintAuth = new FingerPrintAuth();
+            const data = await fingerPrintAuth.available();
+            const hasFingerPrintOrFaceAuth = data.has;
+            const touch = data.touch;
+            const face = data.face;
+
+            console.log("touch===>", touch);
+            console.log("face===>", face);
+
+            if (touch) {
+                fingerPrintAuth.verify({
+                    title: '고경준 천재냄이십니까???????', // optional title (used only on Android)
+                    message: 'Scan your finger', // optional (used on both platforms) - for FaceID on iOS see the notes about NSFaceIDUsageDescription
+                    authenticationValidityDuration: 0, // optional (used on Android, default 5)
+                    useCustomAndroidUI: false,// set to true to use a different authentication screen (see below)
+                    fallbackTitle: "Enter your PaSsWorD ",//The localized title for the fallback button in the dialog presented to the user during authentication.
+                    cancelTitle: "Get me out //The localized title for the cancel button in the dialog presented to the user during authentication"
+                }).then(() => {
+                    alert('fingerPrintAuth success!!!!!!!!')
+                }).catch(err => {
+                    console.log(`Biometric ID NOT OK: ${JSON.stringify(err)}`)
+                    alert('fingerPrintAuth failed!!!!!')
+                });
+            } else {
+                alert('사용불가!! 지문등록 안됨')
+            }
+
+
+        } catch (e) {
+            alert("웹에서는 지원 안됩니당~~~")
+        }
+
+    }
+
+    const [isOpen, setIsOpen] = useState(false);
 
     return (
         <IonPage>
@@ -109,11 +149,47 @@ export default function MainScreen(props) {
                         </a>
                         <View>
                             <AButton title={'push'} onClick={() => {
-                                history.push('./DetailScreen')
+                                history.push('/DetailScreen')
                             }}>
                                 DetailScreen
                             </AButton>
                         </View>
+                        <View style={{height: 30}}/>
+                        <View>
+                            <AButton onClick={() => {
+                                performBiometricVerificatin()
+                            }}>
+                                고경준 천재님이십니디sdlfksdlkf____33333
+                            </AButton>
+                        </View>
+                        <View>
+                            <AButton onClick={() => {
+                                performBiometricVerificatin()
+                            }}>
+                                고경준 천재님이십니디sdlfksdlkf____33333
+                            </AButton>
+                        </View>
+
+                        <View>
+                            <AButton onClick={() => {
+                                setIsOpen(true)
+                            }}>
+                                setIsOpen
+                            </AButton>
+                        </View>
+                        <IonItem>
+                            <IonInput label="고경준천재" labelPlacement={'stacked'}
+                                      placeholder="Enter company name"></IonInput>
+                        </IonItem>
+                        <IonItem>
+                            <IonInput label="고경준천재" labelPlacement={'stacked'}
+                                      placeholder="Enter company name"></IonInput>
+                        </IonItem>
+                        <IonItem>
+                            <IonInput label="고경준천재" labelPlacement={'stacked'}
+                                      placeholder="Enter company name"></IonInput>
+                        </IonItem>
+
                         <View style={{marginTop: 10,}}>
                             <AButton title={'CastScreen'} onClick={async () => {
                                 const init = await CapacitorVideoPlayer.initPlayer({
@@ -140,28 +216,35 @@ export default function MainScreen(props) {
                                 admob
                             </AButton>
                             <View style={{height: 30,}}/>
-                            <AButton type={"dashed"} onClick={async () => {
-                                //SpinnerDialog.show("lkslkflsklfkaslkdflasdkf", "message");
-                                var options = {
-                                    androidTheme: window.plugins.actionsheet.ANDROID_THEMES.THEME_DEVICE_DEFAULT_DARK, // default is THEME_TRADITIONAL
-                                    //androidTheme: ActionSheet.ANDROID_THEMES.THEME_HOLO_DARK,
-                                    title: 'What do you want with this image?',
-                                    subtitle: 'Choose wisely, my friend', // supported on iOS only
-                                    buttonLabels: ['고경준천재님', 'asdasd asdasd!'],
-                                    androidEnableCancelButton: true, // default false
-                                    winphoneEnableCancelButton: true, // default false
-                                    addCancelButtonWithLabel: '취소',
-                                    //addDestructiveButtonWithLabel: 'Delete it',
-                                    position: [20, 40], // for iPad pass in the [x, y] position of the popover
-                                    //destructiveButtonLast: true // you can choose where the destructive button is shown
-                                };
-                                // Depending on the buttonIndex, you can now call shareViaFacebook or shareViaTwitter
-                                // of the SocialSharing plugin (https://github.com/EddyVerbruggen/SocialSharing-PhoneGap-Plugin)
-                                await ActionSheet.show(options, (res) => {
-                                })
-                            }}>
-                                ActionSheet
-                            </AButton>
+                            <IonActionSheet
+                                style={{zIndex: 9999999}}
+                                isOpen={isOpen}
+                                mode={'ios'}
+                                header="Kyungjooongogogogo"
+                                buttons={[
+                                    {
+                                        text: 'Delete',
+                                        role: 'destructive',
+                                        data: {
+                                            action: 'delete'
+                                        }
+                                    },
+                                    {
+                                        text: 'Share',
+                                        data: {
+                                            action: 'share'
+                                        }
+                                    },
+                                    {
+                                        text: 'Cancel',
+                                        role: 'cancel',
+                                        data: {
+                                            action: 'cancel'
+                                        }
+                                    }
+                                ]}
+                                onDidDismiss={() => setIsOpen(false)}
+                            ></IonActionSheet>
                             <AButton type={"dashed"} onClick={async () => {
                                 await Toast.show({
                                     text: 'Hello!',
