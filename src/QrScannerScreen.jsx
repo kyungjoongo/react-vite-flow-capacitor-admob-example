@@ -3,9 +3,8 @@ import React, {useEffect} from 'react'
 import './App.css'
 //import {useNavigate} from "react-router";
 import {BarcodeScanner} from "@capacitor-community/barcode-scanner";
-import {View, Button} from "react-native-web";
-import {Toast} from '@capacitor/toast';
 import {App} from "@capacitor/app";
+import {IonContent, IonHeader, IonPage, IonTitle, IonToolbar} from "@ionic/react";
 
 
 export default function QrScannerScreen(props) {
@@ -20,8 +19,6 @@ export default function QrScannerScreen(props) {
         return () => {
         };
     }, []);
-
-
 
 
     //const navigate = useNavigate();
@@ -45,27 +42,15 @@ export default function QrScannerScreen(props) {
 
 
     return (
-        <div style={{}}>
-            <View style={{
-                position: 'absolute', top: 250, left: 65, width: window.innerWidth * 0.7,
-                height: 250, borderColor: 'red', borderWidth: 2, borderStyle: 'solid',
-            }}>
-            </View>
-            {/*<Button title={'start_scan'}*/}
-            {/*        color={'red'}*/}
-            {/*        onPress={async () => {*/}
-            {/*            startScan();*/}
-            {/*        }}*/}
-            {/*/>*/}
-            {/*<Button title={'kyungjoongogogogo'}*/}
-            {/*        onPress={async () => {*/}
-            {/*            await Toast.show({*/}
-            {/*                text: 'Hello!',*/}
-            {/*                position: 'top',*/}
-            {/*            });*/}
-            {/*        }}*/}
-            {/*/>*/}
-        </div>
+        <IonPage>
+            <IonHeader>
+                <IonToolbar>
+                    <IonTitle>Tab 1asdasdas</IonTitle>
+                </IonToolbar>
+            </IonHeader>
+            <IonContent fullscreen>
+            </IonContent>
+        </IonPage>
     )
 }
 

@@ -68,6 +68,12 @@ export default function DetailScreen() {
                             openModal
                         </Button>
 
+                        <Button type={'primary'} onClick={() => {
+                            history.goBack();
+                        }}>
+                            goBack
+                        </Button>
+
                     </div>
                 </IonContent>
             </IonPage>

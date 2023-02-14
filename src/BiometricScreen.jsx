@@ -24,13 +24,7 @@ export default function BiometricScreen(props) {
             console.log("touch===>", touch);
             console.log("face===>", face);
 
-
-            // if (!hasFingerPrintOrFaceAuth) {
-            //     alert("no hasFingerPrintOrFaceAuth")
-            // } else {
-            //
-            // }
-            if ( touch){
+            if (touch) {
                 fingerPrintAuth.verify({
                     title: '고경준 천재냄이십니까???????', // optional title (used only on Android)
                     message: 'Scan your finger', // optional (used on both platforms) - for FaceID on iOS see the notes about NSFaceIDUsageDescription
@@ -44,7 +38,7 @@ export default function BiometricScreen(props) {
                     console.log(`Biometric ID NOT OK: ${JSON.stringify(err)}`)
                     alert('fingerPrintAuth failed!!!!!')
                 });
-            }else{
+            } else {
                 alert('사용불가!! 지문등록 안됨')
             }
 
