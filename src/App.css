@@ -39,3 +39,8 @@
 .read-the-docs {
   color: #888;
 }
+
+body.scanner-active {
+    --background: transparent;
+    --ion-background-color: transparent;
+}

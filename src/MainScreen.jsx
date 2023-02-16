@@ -160,34 +160,28 @@ export default function MainScreen(props) {
                                 고경준 천재님이십니디sdlfksdlkf____33333
                             </AButton>
                         </View>
-                        <View>
-                            <AButton onClick={() => {
-                                performBiometricVerificatin()
-                            }}>
-                                고경준 천재님이십니디sdlfksdlkf____33333
-                            </AButton>
+                        <View style={{flexDirection: "row"}}>
+                            <Spin style={{fontSize: 20, margin: 30}} size={"large"}/>
+                            <Spin style={{fontSize: 20, margin: 30}} size={"large"}/>
+                            <Spin style={{fontSize: 20, margin: 30}} size={"large"}/>
+                            <Spin style={{fontSize: 20, margin: 30}} size={"large"}/>
+                            <Spin style={{fontSize: 20, margin: 30}} size={"large"}/>
                         </View>
-
                         <View>
                             <AButton onClick={() => {
                                 setIsOpen(true)
                             }}>
-                                setIsOpen
                             </AButton>
                         </View>
+                        <AButton type={"primary"} onClick={async () => {
+                            history.push('/QrScannerScreen')
+                        }}>
+                            startScan
+                        </AButton>
                         <IonItem>
                             <IonInput label="고경준천재" labelPlacement={'stacked'}
                                       placeholder="Enter company name"></IonInput>
                         </IonItem>
-                        <IonItem>
-                            <IonInput label="고경준천재" labelPlacement={'stacked'}
-                                      placeholder="Enter company name"></IonInput>
-                        </IonItem>
-                        <IonItem>
-                            <IonInput label="고경준천재" labelPlacement={'stacked'}
-                                      placeholder="Enter company name"></IonInput>
-                        </IonItem>
-
                         <View style={{marginTop: 10,}}>
                             <AButton title={'CastScreen'} onClick={async () => {
                                 const init = await CapacitorVideoPlayer.initPlayer({
@@ -242,7 +236,7 @@ export default function MainScreen(props) {
                                     }
                                 ]}
                                 onDidDismiss={() => setIsOpen(false)}
-                            ></IonActionSheet>
+                            />
                             <AButton type={"dashed"} onClick={async () => {
                                 await Toast.show({
                                     text: 'Hello!',
@@ -251,11 +245,6 @@ export default function MainScreen(props) {
                                 Toast222222
                             </AButton>
                             <View style={{height: 20}}/>
-                            <AButton type={"primary"} onClick={async () => {
-                                history.push('/QrScannerScreen')
-                            }}>
-                                startScan
-                            </AButton>
                             <View style={{height: 20}}/>
                             <AButton type={"primary"} onClick={async () => {
                                 YoutubeVideoPlayer.openVideo('Dmn7tTaNM-I', (result) => {

@@ -28,6 +28,7 @@ import './theme/variables.css';
 import {IonReactRouter} from "@ionic/react-router";
 import {Dialog} from "@capacitor/dialog";
 import BiometricScreen from "./BiometricScreen.jsx";
+import QrScannerScreen from "./QrScannerScreen";
 
 setupIonicReact();
 
@@ -110,10 +111,10 @@ function MainApp() {
                         <Route exact path="/" component={MainScreen}/>
                         <Route path="/DetailScreen" component={DetailScreen}/>
                         <Route path="/BiometricScreen" component={BiometricScreen}/>
-
+                        <Route path="/QrScannerScreen" component={QrScannerScreen}/>
 
                         {/*<Route path="/CastScreen" component={<CastScreen/>}/>*/}
-                        {/*<Route path="/QrScannerScreen" component={<QrScannerScreen/>}/>*/}
+
                         {/*<Route path="/YoutubeScreen" component={<YoutubeScreen/>}/>*/}
 
                     </IonRouterOutlet>
